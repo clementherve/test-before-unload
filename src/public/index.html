@@ -8,15 +8,13 @@
   <body>
     <div id="random-token"></div>
     <script>
-      const generateToken = () => new Date().getTime();
-      const randomToken = generateToken();
-
+      const randomToken = new Date().getTime();
       document.querySelector('#random-token').textContent = randomToken;
 
       window.addEventListener('beforeunload', async () => {
-        // setTimeout(() => {
-        fetch(`http://localhost:3000/ping?token=${randomToken}`).then(console.log);
-        // });
+        setTimeout(() => {
+          fetch(`http://localhost:3000/ping?token=${randomToken}`).then(console.log);
+        });
       });
     </script>
   </body>
