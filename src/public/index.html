@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="random-token"></div>
+    <script>
+      const generateToken = () => new Date().getTime();
+      const randomToken = generateToken();
+
+      document.querySelector('#random-token').textContent = randomToken;
+
+      window.addEventListener('beforeunload', async () => {
+        // setTimeout(() => {
+        fetch(`http://localhost:3000/ping?token=${randomToken}`).then(console.log);
+        // });
+      });
+    </script>
+  </body>
+</html>
